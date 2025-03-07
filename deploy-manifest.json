@@ -3,8 +3,19 @@
   "framework": { "name": "hono", "version": "4.7.4" },
   "routes": [
     {
-      "path": "/api/*",
+      "path": "/_amplify/image",
       "target": {
+        "kind": "ImageOptimization",
+        "cacheControl": "public, max-age=3600, immutable"
+      }
+    },
+    {
+      "path": "/*.*",
+      "target": {
+        "kind": "Static",
+        "cacheControl": "public, max-age=2"
+      },
+      "fallback": {
         "kind": "Compute",
         "src": "default"
       }
@@ -12,7 +23,8 @@
     {
       "path": "/*",
       "target": {
-        "kind": "Static"
+        "kind": "Compute",
+        "src": "default"
       }
     }
   ],
