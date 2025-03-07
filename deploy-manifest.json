@@ -1,22 +1,10 @@
 {
   "version": 1,
-  "framework": { "name": "hono", "version": "3.10.2" },
-  "imageSettings": {
-    "sizes": [100, 200, 1920],
-    "domains": [],
-    "remotePatterns": [],
-    "formats": [],
-    "minimumCacheTTL": 60,
-    "dangerouslyAllowSVG": false
-  },
+  "framework": { "name": "hono", "version": "4.7.4" },
   "routes": [
     {
-      "path": "/*.*",
+      "path": "/api/*",
       "target": {
-        "kind": "Static",
-        "cacheControl": "public, max-age=2"
-      },
-      "fallback": {
         "kind": "Compute",
         "src": "default"
       }
@@ -24,8 +12,7 @@
     {
       "path": "/*",
       "target": {
-        "kind": "Compute",
-        "src": "default"
+        "kind": "Static"
       }
     }
   ],
