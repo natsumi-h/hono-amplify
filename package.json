@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
+    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh",
+    "start": "ts-node dist/index.js"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
     "typescript": "^5.8.2"
   }

@@ -4,11 +4,15 @@ import { Hono } from "hono";
 const app = new Hono();
 
 app.get("/", (c) => {
-  return c.text("Hello Hono!");
+  console.log("Hello Hono!!");
+
+  return c.text("Hello Hono!!");
 });
 
 app.post("/", (c) => {
   const body = c.body;
+  console.log("body", body);
+
   return c.json(body);
 });
 
