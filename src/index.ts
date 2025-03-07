@@ -2,13 +2,26 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 
 const app = new Hono();
+
 app.get("/", (c) => {
-  // list all headers to display response
-  let res = "your headers: \n";
-  for (const header of c.req.raw.headers.entries()) {
-    res += `${header[0]}: ${header[1]}` + "\n";
-  }
-  return c.text(res);
+  return c.text("Hello Hono!");
 });
 
-serve(app);
+app.get("/random", (c) => {
+  return c.json({ random: Math.random() });
+});
+
+let count = 0;
+app.get("/count", (c) => {
+  return c.json({ count: count++ });
+});
+
+serve(
+  {
+    fetch: app.fetch,
+    port: 3000,
+  },
+  (info) => {
+    console.log(`Server is running on http://localhost:${info.port}`);
+  }
+);
