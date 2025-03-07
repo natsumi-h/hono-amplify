@@ -16,14 +16,12 @@ app.post("/", (c) => {
   return c.json(body);
 });
 
-// serve(
-//   {
-//     fetch: app.fetch,
-//     port: 3000,
-//   },
-//   (info) => {
-//     console.log(`Server is running on http://localhost:${info.port}`);
-//   }
-// );
-
-serve(app);
+serve(
+  {
+    fetch: app.fetch,
+    port: 3000,
+  },
+  (info) => {
+    console.log(`Server is running on http://localhost:${info.port}`);
+  }
+);
